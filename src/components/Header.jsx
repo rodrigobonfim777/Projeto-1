@@ -7,13 +7,20 @@ import {
 } from "@mantine/core";
 
 import { useDisclosure } from "@mantine/hooks";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [opened, { toggle }] = useDisclosure(false);
+  const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <AppShell.Header>
-
       <Container
         size="xl"
         h="100%"
@@ -23,44 +30,60 @@ export default function Header() {
           justifyContent: "space-between",
         }}
       >
-
         <h2
           style={{
             fontWeight: 700,
             fontSize: 30,
             color: "#845EF7",
+            cursor: "pointer",
           }}
+          onClick={() => scrollToSection("home")}
         >
           NeuroAI
         </h2>
 
         <Group visibleFrom="md">
-
-          <Button variant="subtle">
+          <Button
+            variant="subtle"
+            onClick={() => scrollToSection("home")}
+          >
             Home
           </Button>
 
-          <Button variant="subtle">
+          <Button
+            variant="subtle"
+            onClick={() => scrollToSection("features")}
+          >
             Recursos
           </Button>
 
-          <Button variant="subtle">
+          <Button
+            variant="subtle"
+            onClick={() => scrollToSection("pricing")}
+          >
             Planos
           </Button>
 
-          <Button variant="subtle">
+          <Button
+            variant="subtle"
+            onClick={() => scrollToSection("faq")}
+          >
             FAQ
           </Button>
 
-          <Button variant="subtle">
+          <Button
+            variant="subtle"
+            onClick={() => scrollToSection("contact")}
+          >
             Contato
           </Button>
-
         </Group>
 
         <Group>
-
-          <Button radius="xl">
+          <Button
+            radius="xl"
+            onClick={() => navigate("/login")}
+          >
             Entrar
           </Button>
 
@@ -69,11 +92,8 @@ export default function Header() {
             opened={opened}
             onClick={toggle}
           />
-
         </Group>
-
       </Container>
-
     </AppShell.Header>
   );
 }

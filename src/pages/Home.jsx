@@ -14,12 +14,29 @@ export default function Home() {
       <Header />
 
       <AppShell.Main>
-        <Hero />
-        <Stats />
-        <Features />
-        <Pricing />
-        <FAQ />
-        <Footer />
+        <div id="home">
+          <Hero />
+        </div>
+
+        <div id="stats">
+          <Stats />
+        </div>
+
+        <div id="features">
+          <Features />
+        </div>
+
+        <div id="pricing">
+          <Pricing />
+        </div>
+
+        <div id="faq">
+          <FAQ />
+        </div>
+
+        <div id="contact">
+          <Footer />
+        </div>
       </AppShell.Main>
     </AppShell>
   );
