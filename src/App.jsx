@@ -1,26 +1,17 @@
-import { AppShell } from "@mantine/core";
+import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Stats from "./components/Stats";
-import Features from "./components/Features";
-import Pricing from "./components/Pricing";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
-    <AppShell header={{ height: 80 }}>
-      <Header />
-
-      <AppShell.Main>
-        <Hero />
-        <Stats />
-        <Features />
-        <Pricing />
-        <FAQ />
-        <Footer />
-      </AppShell.Main>
-    </AppShell>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 }
