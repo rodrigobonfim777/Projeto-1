@@ -1,17 +1,23 @@
 import {
+  ActionIcon,
   AppShell,
   Button,
   Container,
   Group,
   Burger,
+  Tooltip,
 } from "@mantine/core";
 
 import { useDisclosure } from "@mantine/hooks";
+import { IconMoon, IconSun } from "@tabler/icons-react";
+import { useMantineColorScheme } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const navigate = useNavigate();
+  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === "dark";
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
@@ -80,6 +86,18 @@ export default function Header() {
         </Group>
 
         <Group>
+          <Tooltip label={isDark ? "Usar tema claro" : "Usar tema escuro"}>
+            <ActionIcon
+              variant="default"
+              size="lg"
+              radius="xl"
+              aria-label={isDark ? "Ativar tema claro" : "Ativar tema escuro"}
+              onClick={() => setColorScheme(isDark ? "light" : "dark")}
+            >
+              {isDark ? <IconSun size={18} /> : <IconMoon size={18} />}
+            </ActionIcon>
+          </Tooltip>
+
           <Button
             radius="xl"
             onClick={() => navigate("/login")}
